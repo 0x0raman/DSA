@@ -29,7 +29,7 @@ public class UniqueCharCount {
         // return set.size();
         for (char i : s.toCharArray()) {
             set.add(i);
-            if(s.charAt(i) == ',') return set.size()-1;
+            // if(s.charAt(i) == ',') return set.size();
         }
         return set.size();
     }
