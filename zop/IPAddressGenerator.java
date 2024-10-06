@@ -86,7 +86,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class IPAddressGenerator {
-    public static ArrayList<String> restoreIpAddresses(String s) {
+    private static ArrayList<String> restoreIpAddresses(String s) {
         ArrayList<String> result = new ArrayList<>();
         if (s == null || s.length() < 4 || s.length() > 12) {
             return result; // Return early if string can't form a valid IP address
