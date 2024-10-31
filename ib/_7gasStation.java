@@ -1,8 +1,5 @@
 package ib;
 
-/**
- * _7gasStation
- */
 public class _7gasStation {
     private static int canCompleteCircuit(int[] gas, int[] cost) {
         int n = gas.length;
