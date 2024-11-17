@@ -70,6 +70,28 @@ public class test {
         }
         return min+" "+max;
     }
+    private static int reverseInt(int nums){
+        int rev = 0;
+        while(nums!=0){
+            int lastd = nums % 10;
+            nums /= 10;
+            rev = (rev * 10) + lastd;
+        }
+        return rev;
+    }
+
+    private static String reverseString1(String s){
+        char[] charArray = s.toCharArray();
+        int l = 0, r = charArray.length-1;
+        while(l<r){
+            char temp = charArray[r];
+            charArray[r] = charArray[l];
+            charArray[l] = temp;
+            l++;
+            r--;
+        }
+        return new String(charArray);
+    }
 
     public static void main(String[] args) {
         String a = "a3b2c7";
@@ -82,5 +104,7 @@ public class test {
         linearSearch(d, 4);
         System.out.println(binarySearch(d, 3));
         System.out.println(minmaxNum(d));
+        System.out.println(reverseInt(1234));
+        System.out.println(reverseString1(a));
     }
 }
