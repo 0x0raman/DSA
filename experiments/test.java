@@ -93,6 +93,125 @@ public class test {
         return new String(charArray);
     }
 
+// ----------------------------------------------------------------------
+
+    private class Stack {
+        int maxSize, top;
+        int[] stackArray;
+        Stack(int size){
+            maxSize = size;
+            stackArray = new int[maxSize];
+            top = -1;
+        }
+        boolean isFull(){
+            return top == maxSize - 1;
+        }
+        boolean isEmpty(){
+            return top == -1;
+        }
+        int push(int value){
+            if(isFull()){
+                System.out.println("Stack is full.");
+                return -1;
+            } else{
+                stackArray[++top] = value;
+                System.out.println(value+" pushed to stack.");
+                return value;
+            }
+        }
+        void pop(){
+            if(isEmpty()){
+                System.out.println("Stack is empty.");
+            } else{
+                int popped = stackArray[top--];
+                System.out.println(popped+" value popped.");
+            }
+        }
+        int peek(){
+            if(isEmpty()){
+                System.out.println("STack is empty.");
+                return -1;
+            } else{
+                return stackArray[top];
+            }
+        }
+        int size(){
+            return top + 1;
+        }
+        void printStack(){
+            if(isEmpty()){
+                System.out.println("Stack is empty.");
+            } else{
+                for(int i = 0; i <= top; i++){
+                    System.out.print(stackArray[i]+" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+// -------------------------------------------------
+
+    private class Queue{
+        int maxSize, front, rear;
+        int[] queueArray;
+        Queue(int size){
+            maxSize = size;
+            front = rear = -1;
+            queueArray = new int[maxSize];
+        }
+        boolean isFull(){
+            return rear == maxSize - 1;
+        }
+        boolean isEmpty(){
+            return front == -1;
+        }
+        int enqueue(int value){
+           if(isFull()){
+            System.out.println("Queue is at full capacity.");
+            return -1;
+           } else{
+            if(front == -1){
+                front = 0;
+            }
+            queueArray[++rear] = value;
+            System.out.println("Enqueued "+value);
+            return value;
+           }
+        }
+        void dequeue(){
+            if(isEmpty()){
+                System.out.println("Queue is empty.");
+            } else{
+                int dq = queueArray[front];
+                if(front == rear) front = rear = -1;
+                else front++;
+                System.out.println("dequeued "+dq);
+            }
+        }
+        int peek(){
+            if(isEmpty()){
+                System.out.println("Queue is empty.");
+                return -1;
+            } else{
+                return queueArray[front];
+            }
+        }
+        int size(){
+            if(isEmpty()) return 0;
+            else return rear - front + 1;
+        }
+        void printQueue(){
+            if(isEmpty()){
+                System.out.println("Queue is empty.");
+            } else{
+                for(int i = front; i <= rear; i++){
+                    System.out.print(queueArray[i]+" ");
+                }
+            }
+            System.out.println();
+        }
+    }
     public static void main(String[] args) {
         String a = "a3b2c7";
         System.out.println(expansion(a)); 
@@ -106,5 +225,37 @@ public class test {
         System.out.println(minmaxNum(d));
         System.out.println(reverseInt(1234));
         System.out.println(reverseString1(a));
+
+        test obj = new test();
+        Stack stack = obj.new Stack(5);
+        stack.push(10);
+        stack.push(10);
+        stack.push(10);
+        stack.push(20);
+        stack.push(40);
+        stack.push(30);
+        stack.pop();
+        System.out.println("peek: "+stack.peek());
+        System.out.println("size: "+stack.size());
+        stack.printStack();
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.printStack();
+
+        Queue queue = obj.new Queue(5);
+        queue.enqueue(0);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.printQueue();
+        System.out.println("Front element is: "+queue.peek());
+        queue.dequeue();
+        queue.dequeue();
+        queue.printQueue();
+        System.out.println("Front element after dequeues: "+queue.peek());
+        System.out.println("Queue size: "+queue.size());
     }
 }
