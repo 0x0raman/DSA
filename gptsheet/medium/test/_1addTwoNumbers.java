@@ -64,3 +64,5 @@ public class _1addTwoNumbers {
         }
     }
 }
+
+// TC : O(max(m,n)) where m and n are length of l1 and l2

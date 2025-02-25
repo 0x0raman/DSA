@@ -9,18 +9,21 @@ import java.util.Map;
 @SuppressWarnings("unused")
 
 public class _4GroupAnagrams {
-        private List<List<String>> groupAnagramsOptimised(String[] strs) {
+    private List<List<String>> groupAnagramsOptimised(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
-        for(String s : strs){
+        for (String s : strs) {
             int[] count = new int[26];
-            for(char c : s.toCharArray()) count[c - 'a']++;
+            for (char c : s.toCharArray())
+                count[c - 'a']++;
             String key = Arrays.toString(count);
             map.putIfAbsent(key, new ArrayList<>());
             map.get(key).add(s);
         }
         return new ArrayList<>(map.values());
     }
-    
+    // TC : O(m*n)
+    // SC : O(m)
+
     private List<List<String>> groupAnagramsSorting(String[] strs) {
         Map<String, List<String>> res = new HashMap<>();
         for (String s : strs) {
@@ -33,3 +36,5 @@ public class _4GroupAnagrams {
         return new ArrayList<>(res.values());
     }
 }
+// TC : O(m*nlogn)
+// SC : O(m*n)
