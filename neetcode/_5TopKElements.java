@@ -27,7 +27,22 @@ public class _5TopKElements {
         }
 
         return res;
+
+        // Map<Integer, Integer> map = new HashMap<>();
+        // for(int num : nums){
+        //     map.put(num, map.getOrDefault(num, 0) + 1);
+        // }
+        // List<Map.Entry<Integer, Integer>> entryList = new ArrayList<>(map.entrySet());
+        // entryList.sort((a, b) -> b.getValue() - a.getValue());
+        // int[] result = new int[k];
+        // for(int i = 0; i < k; i++){
+        //     result[i] = entryList.get(i).getKey();
+        // }
+        // return result;
     }
+
+//TC: O(nlogn)
+//SC: O(n)
     
     private int[] heapTopKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -48,6 +63,15 @@ public class _5TopKElements {
         for (int i = 0; i < k; i++) {
             res[i] = heap.poll()[1];
         }
+        return res;
+    }
+    //TC: O(nlogk)
+    //SC: O(n+k)
+
+    private int[] heapTopKFrequentOptimised(int[] nums, int k) { //Bucket Sort
+        
+        int[] res = new int[k];
+
         return res;
     }
 }
